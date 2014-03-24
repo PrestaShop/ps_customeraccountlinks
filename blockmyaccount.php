@@ -33,7 +33,7 @@ class BlockMyAccount extends Module
 	{
 		$this->name = 'blockmyaccount';
 		$this->tab = 'front_office_features';
-		$this->version = '1.2';
+		$this->version = '1.3';
 		$this->author = 'PrestaShop';
 		$this->need_instance = 0;
 
@@ -41,6 +41,7 @@ class BlockMyAccount extends Module
 
 		$this->displayName = $this->l('My Account block');
 		$this->description = $this->l('Displays a block with links relative to a user\'s account.');
+		$this->ps_versions_compliancy = array('min' => '1.5.6.1', 'max' => _PS_VERSION_);
 	}
 
 	public function install()
