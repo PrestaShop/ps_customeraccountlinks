@@ -69,10 +69,9 @@ class BlockMyAccount extends Module implements WidgetInterface
             return false;
         }
 
-        if (!$this->isCached($this->name.'.tpl', $this->getCacheId())) {
-            $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
-        }
-        return $this->display(__FILE__, $this->name.'.tpl', $this->getCacheId());
+        $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
+
+        return $this->display(__FILE__, $this->name.'.tpl');
     }
 
     public function getWidgetVariables($hookName = null, array $configuration = [])
