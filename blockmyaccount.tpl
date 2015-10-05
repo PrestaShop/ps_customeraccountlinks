@@ -31,5 +31,5 @@
         {/foreach}
         {hook h="displayMyAccountBlock"}
 	</ul>
-	<p class="logout"><a href="{url entity=index params=['mylogout' => 1]}" title="{l s='Sign out' mod='blockmyaccount'}" rel="nofollow">{l s='Sign out' mod='blockmyaccount'}</a></p>
+	<p class="logout"><a href="{$logout_url}" title="{l s='Sign out' mod='blockmyaccount'}" rel="nofollow">{l s='Sign out' mod='blockmyaccount'}</a></p>
 </div>
