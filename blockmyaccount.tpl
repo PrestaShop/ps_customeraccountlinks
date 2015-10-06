@@ -23,20 +23,13 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<!-- Block myaccount module -->
-<div class="block myaccount">
-	<h4 class="title_block"><a href="{$link->getPageLink('my-account', true)|escape:'html'}" title="{l s='My account' mod='blockmyaccount'}">{l s='My account' mod='blockmyaccount'}</a></h4>
-	<div class="block_content">
-		<ul class="bullet">
-			<li><a href="{$link->getPageLink('history', true)|escape:'html'}" title="">{l s='My orders' mod='blockmyaccount'}</a></li>
-			{if $returnAllowed}<li><a href="{$link->getPageLink('order-follow', true)|escape:'html'}" title="{l s='My merchandise returns' mod='blockmyaccount'}">{l s='My merchandise returns' mod='blockmyaccount'}</a></li>{/if}
-			<li><a href="{$link->getPageLink('order-slip', true)|escape:'html'}" title="{l s='My credit slips' mod='blockmyaccount'}">{l s='My credit slips' mod='blockmyaccount'}</a></li>
-			<li><a href="{$link->getPageLink('addresses', true)|escape:'html'}" title="{l s='My addresses' mod='blockmyaccount'}">{l s='My addresses' mod='blockmyaccount'}</a></li>
-			<li><a href="{$link->getPageLink('identity', true)|escape:'html'}" title="{l s='My personal info' mod='blockmyaccount'}">{l s='My personal info' mod='blockmyaccount'}</a></li>
-			{if $voucherAllowed}<li><a href="{$link->getPageLink('discount', true)|escape:'html'}" title="{l s='My vouchers' mod='blockmyaccount'}">{l s='My vouchers' mod='blockmyaccount'}</a></li>{/if}
-			{$HOOK_BLOCK_MY_ACCOUNT}
-		</ul>
-		<p class="logout"><a href="{$link->getPageLink('index', true, NULL, "mylogout")|escape:'html'}" title="{l s='Sign out' mod='blockmyaccount'}">{l s='Sign out' mod='blockmyaccount'}</a></p>
-	</div>
+<div id="block_myaccount_infos">
+	<h4><a href="{$urls.pages.my_account}" title="{l s='My account' mod='blockmyaccount'}" rel="nofollow">{l s='My account' mod='blockmyaccount'}</a></h4>
+	<ul>
+        {foreach from=$my_account_urls item=my_account_url}
+            <li><a href="{$my_account_url.url}" title="{$my_account_url.title}" rel="nofollow">{$my_account_url.title}</a></li>
+        {/foreach}
+        {hook h="displayMyAccountBlock"}
+	</ul>
+	<p class="logout"><a href="{$logout_url}" title="{l s='Sign out' mod='blockmyaccount'}" rel="nofollow">{l s='Sign out' mod='blockmyaccount'}</a></p>
 </div>
-<!-- /Block myaccount module -->
