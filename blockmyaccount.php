@@ -28,7 +28,7 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-use PrestaShop\PrestaShop\Core\Business\Module\WidgetInterface;
+use PrestaShop\PrestaShop\Core\Module\WidgetInterface;
 
 class BlockMyAccount extends Module implements WidgetInterface
 {
