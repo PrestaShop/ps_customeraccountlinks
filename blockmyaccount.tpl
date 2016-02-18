@@ -24,12 +24,11 @@
 *}
 
 <div id="block_myaccount_infos">
-	<h4><a href="{$urls.pages.my_account}" title="{l s='My account' mod='blockmyaccount'}" rel="nofollow">{l s='My account' mod='blockmyaccount'}</a></h4>
+	<h4><a href="{$urls.pages.my_account}" title="{l s='Your account' mod='blockmyaccount'}" rel="nofollow">{l s='Your account' mod='blockmyaccount'}</a></h4>
 	<ul>
-        {foreach from=$my_account_urls item=my_account_url}
-            <li><a href="{$my_account_url.url}" title="{$my_account_url.title}" rel="nofollow">{$my_account_url.title}</a></li>
-        {/foreach}
-        {hook h="displayMyAccountBlock"}
+    {foreach from=$my_account_urls item=my_account_url}
+        <li><a href="{$my_account_url.url}" title="{$my_account_url.title}" rel="nofollow">{$my_account_url.title}</a></li>
+    {/foreach}
+    {hook h="displayMyAccountBlock"}
 	</ul>
-	<p class="logout"><a href="{$logout_url}" title="{l s='Sign out' mod='blockmyaccount'}" rel="nofollow">{l s='Sign out' mod='blockmyaccount'}</a></p>
 </div>

@@ -80,33 +80,33 @@ class BlockMyAccount extends Module implements WidgetInterface
 
         $my_account_urls = [
             0 => [
-                'title' => $this->l('My orders'),
+                'title' => $this->l('Orders'),
                 'url' => $link->getPageLink('history', true),
             ],
             2 => [
-                'title' => $this->l('My credit slips'),
+                'title' => $this->l('Credit slips'),
                 'url' => $link->getPageLink('order-slip', true),
             ],
             3 => [
-                'title' => $this->l('My addresses'),
+                'title' => $this->l('Addresses'),
                 'url' => $link->getPageLink('addresses', true),
             ],
             4 => [
-                'title' => $this->l('My personal info'),
+                'title' => $this->l('Personal info'),
                 'url' => $link->getPageLink('identity', true),
             ],
         ];
 
         if ((int)Configuration::get('PS_ORDER_RETURN')) {
             $my_account_urls[1] = [
-                'title' => $this->l('My merchandise returns'),
+                'title' => $this->l('Merchandise returns'),
                 'url' => $link->getPageLink('order-follow', true),
             ];
         }
 
         if (CartRule::isFeatureActive()) {
             $my_account_urls[5] = [
-                'title' => $this->l('My vouchers'),
+                'title' => $this->l('Vouchers'),
                 'url' => $link->getPageLink('discount', true),
             ];
         }
