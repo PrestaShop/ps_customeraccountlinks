@@ -65,10 +65,6 @@ class BlockMyAccount extends Module implements WidgetInterface
 
     public function renderWidget($hookName = null, array $configuration = [])
     {
-        if (!$this->context->customer->isLogged()) {
-            return false;
-        }
-
         $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
 
         return $this->display(__FILE__, $this->name.'.tpl');
