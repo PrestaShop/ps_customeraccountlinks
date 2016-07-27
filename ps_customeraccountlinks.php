@@ -30,13 +30,13 @@ if (!defined('_PS_VERSION_')) {
 
 use PrestaShop\PrestaShop\Core\Module\WidgetInterface;
 
-class BlockMyAccount extends Module implements WidgetInterface
+class Ps_Customeraccountlinks extends Module implements WidgetInterface
 {
     public function __construct()
     {
-        $this->name = 'blockmyaccount';
+        $this->name = 'ps_customeraccountlinks';
         $this->tab = 'front_office_features';
-        $this->version = '2.0';
+        $this->version = '1.0.0';
         $this->author = 'PrestaShop';
         $this->need_instance = 0;
 
