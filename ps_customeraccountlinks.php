@@ -49,13 +49,11 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
 
     public function install()
     {
-        if (!parent::install()
-            || !$this->registerHook('displayFooter')
-            || !$this->registerHook('actionModuleRegisterHookAfter')
-            || !$this->registerHook('actionModuleUnRegisterHookAfter')) {
-            return false;
-        }
-        return true;
+        return parent::install()
+            && $this->registerHook('actionModuleRegisterHookAfter')
+            && $this->registerHook('actionModuleUnRegisterHookAfter')
+            && $this->registerHook('displayFooter')
+        ;
     }
 
     public function uninstall()
