@@ -44,7 +44,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
 
         $this->displayName = $this->l('My Account block');
         $this->description = $this->l('Displays a block with links relative to a user\'s account.');
-        $this->ps_versions_compliancy = array('min' => '1.7', 'max' => _PS_VERSION_);
+        $this->ps_versions_compliancy = array('min' => '1.7.0.0', 'max' => _PS_VERSION_);
     }
 
     public function install()
