@@ -65,7 +65,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
     {
         $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
 
-        return $this->display(__FILE__, $this->name.'.tpl');
+        return $this->fetch('module:'.$this->name.'/'.$this->name.'.tpl');
     }
 
     public function getWidgetVariables($hookName = null, array $configuration = [])
