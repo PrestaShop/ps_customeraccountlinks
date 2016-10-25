@@ -105,7 +105,8 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
             ];
         }
 
-        sort($my_account_urls);
+        // Sort Account links base in his title, keeping the keys
+        asort($my_account_urls);
 
         return [
             'my_account_urls' => $my_account_urls,
