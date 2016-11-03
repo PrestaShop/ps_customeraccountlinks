@@ -32,19 +32,23 @@ use PrestaShop\PrestaShop\Core\Module\WidgetInterface;
 
 class Ps_Customeraccountlinks extends Module implements WidgetInterface
 {
+    private $templateFile;
+
     public function __construct()
     {
         $this->name = 'ps_customeraccountlinks';
-        $this->tab = 'front_office_features';
-        $this->version = '1.0.3';
         $this->author = 'PrestaShop';
+        $this->version = '1.0.3';
         $this->need_instance = 0;
 
         parent::__construct();
 
         $this->displayName = $this->l('My Account block');
         $this->description = $this->l('Displays a block with links relative to a user\'s account.');
+
         $this->ps_versions_compliancy = array('min' => '1.7.0.0', 'max' => _PS_VERSION_);
+
+        $this->templateFile = 'module:ps_customeraccountlinks/ps_customeraccountlinks.tpl';
     }
 
     public function install()
@@ -58,79 +62,81 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
 
     public function uninstall()
     {
-        return (parent::uninstall() && $this->removeMyAccountBlockHook());
+        return (parent::uninstall()
+            && $this->removeMyAccountBlockHook());
+    }
+
+    public function hookActionModuleUnRegisterHookAfter($params)
+    {
+        if ('displayMyAccountBlock' === $params['hook_name']) {
+            $this->_clearCache('*');
+        }
+    }
+
+    public function hookActionModuleRegisterHookAfter($params)
+    {
+        if ($params['hook_name'] == 'displayMyAccountBlock') {
+            $this->_clearCache('*');
+        }
+    }
+
+    public function _clearCache($template, $cache_id = null, $compile_id = null)
+    {
+        parent::_clearCache($this->templateFile);
     }
 
     public function renderWidget($hookName = null, array $configuration = [])
     {
-        $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
+        if (!$this->isCached($this->templateFile, $this->getCacheId('ps_customeraccountlinks'))) {
+            $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
+        }
 
-        return $this->fetch('module:'.$this->name.'/'.$this->name.'.tpl');
+        return $this->fetch($this->templateFile, $this->getCacheId('ps_customeraccountlinks'));
     }
 
     public function getWidgetVariables($hookName = null, array $configuration = [])
     {
         $link = $this->context->link;
 
-        $my_account_urls = [
-            0 => [
+        $my_account_urls = array(
+            0 => array(
                 'title' => $this->l('Orders'),
                 'url' => $link->getPageLink('history', true),
-            ],
-            2 => [
+            ),
+            2 => array(
                 'title' => $this->l('Credit slips'),
                 'url' => $link->getPageLink('order-slip', true),
-            ],
-            3 => [
+            ),
+            3 => array(
                 'title' => $this->l('Addresses'),
                 'url' => $link->getPageLink('addresses', true),
-            ],
-            4 => [
+            ),
+            4 => array(
                 'title' => $this->l('Personal info'),
                 'url' => $link->getPageLink('identity', true),
-            ],
-        ];
+            ),
+        );
 
         if ((int)Configuration::get('PS_ORDER_RETURN')) {
-            $my_account_urls[1] = [
+            $my_account_urls[1] = array(
                 'title' => $this->l('Merchandise returns'),
                 'url' => $link->getPageLink('order-follow', true),
-            ];
+            );
         }
 
         if (CartRule::isFeatureActive()) {
-            $my_account_urls[5] = [
+            $my_account_urls[5] = array(
                 'title' => $this->l('Vouchers'),
                 'url' => $link->getPageLink('discount', true),
-            ];
+            );
         }
 
         // Sort Account links base in his title, keeping the keys
         asort($my_account_urls);
 
-        return [
+        return array(
             'my_account_urls' => $my_account_urls,
             'logout_url' => $link->getPageLink('index', true, null, "mylogout"),
-        ];
-    }
-
-    public function hookActionModuleUnRegisterHookAfter($params)
-    {
-        return $this->hookActionModuleRegisterHookAfter($params);
-    }
-    public function hookActionModuleRegisterHookAfter($params)
-    {
-        if ($params['hook_name'] == 'displayMyAccountBlock') {
-            $this->_clearCache($this->name.'.tpl');
-        }
-    }
-
-    private function addMyAccountBlockHook()
-    {
-        return Db::getInstance()->execute('INSERT IGNORE INTO `'._DB_PREFIX_.'hook` (`name`, `title`, `description`, `position`) VALUES (\'displayMyAccountBlock\', \'My account block\', \'Display extra informations inside the "my account" block\', 1)');
-    }
-    private function removeMyAccountBlockHook()
-    {
-        return Db::getInstance()->execute('DELETE FROM `'._DB_PREFIX_.'hook` WHERE `name` = \'displayMyAccountBlock\'');
+        );
     }
 }
