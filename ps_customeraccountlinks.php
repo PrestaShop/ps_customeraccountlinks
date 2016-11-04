@@ -38,7 +38,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
     {
         $this->name = 'ps_customeraccountlinks';
         $this->author = 'PrestaShop';
-        $this->version = '1.0.3';
+        $this->version = '1.0.4';
         $this->need_instance = 0;
 
         parent::__construct();
