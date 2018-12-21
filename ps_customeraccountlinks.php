@@ -135,7 +135,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
 
         return [
             'my_account_urls' => $my_account_urls,
-            'logout_url' => $link->getPageLink('index', true, null, "mylogout"),
+            'logout_url' => $link->getPageLink('index', true, null, 'mylogout'),
         ];
     }
 }
