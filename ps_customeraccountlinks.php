@@ -24,7 +24,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-if (!defined('_PS_VERSION_')) {
+if ( ! defined('_PS_VERSION_')) {
     exit;
 }
 
@@ -86,7 +86,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
 
     public function renderWidget($hookName = null, array $configuration = [])
     {
-        if (!$this->isCached($this->templateFile, $this->getCacheId('ps_customeraccountlinks'))) {
+        if ( ! $this->isCached($this->templateFile, $this->getCacheId('ps_customeraccountlinks'))) {
             $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
         }
 
