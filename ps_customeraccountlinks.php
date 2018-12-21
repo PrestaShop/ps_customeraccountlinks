@@ -116,7 +116,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
             ],
         ];
 
-        if ((int)Configuration::get('PS_ORDER_RETURN')) {
+        if ((int) Configuration::get('PS_ORDER_RETURN')) {
             $my_account_urls[1] = [
                 'title' => $this->trans('Merchandise returns', [], 'Modules.Customeraccountlinks.Admin'),
                 'url' => $link->getPageLink('order-follow', true),
