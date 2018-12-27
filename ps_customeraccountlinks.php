@@ -56,8 +56,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         return parent::install()
             && $this->registerHook('actionModuleRegisterHookAfter')
             && $this->registerHook('actionModuleUnRegisterHookAfter')
-            && $this->registerHook('displayFooter')
-        ;
+            && $this->registerHook('displayFooter');
     }
 
     public function uninstall()
