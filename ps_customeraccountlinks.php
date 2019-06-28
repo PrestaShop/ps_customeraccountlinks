@@ -66,11 +66,6 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         ;
     }
 
-    public function uninstall()
-    {
-        return parent::uninstall();
-    }
-
     /**
      * Migrate data from 1.6 equivalent module (if applicable), then uninstall
      */
