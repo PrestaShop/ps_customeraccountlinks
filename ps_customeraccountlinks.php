@@ -60,12 +60,6 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         ;
     }
 
-    public function uninstall()
-    {
-        return (parent::uninstall()
-            && $this->removeMyAccountBlockHook());
-    }
-
     public function hookActionModuleUnRegisterHookAfter($params)
     {
         if ('displayMyAccountBlock' === $params['hook_name']) {
