@@ -23,7 +23,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
-
 if (!defined('_PS_VERSION_')) {
     exit;
 }
@@ -43,10 +42,10 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
 
         parent::__construct();
 
-        $this->displayName = $this->trans('My Account block', array(), 'Modules.Customeraccountlinks.Admin');
-        $this->description = $this->trans('Displays a block with links relative to a user\'s account.', array(), 'Modules.Customeraccountlinks.Admin');
+        $this->displayName = $this->trans('My Account block', [], 'Modules.Customeraccountlinks.Admin');
+        $this->description = $this->trans('Displays a block with links relative to a user\'s account.', [], 'Modules.Customeraccountlinks.Admin');
 
-        $this->ps_versions_compliancy = array('min' => '1.7.2.0', 'max' => _PS_VERSION_);
+        $this->ps_versions_compliancy = ['min' => '1.7.2.0', 'max' => _PS_VERSION_];
 
         $this->templateFile = 'module:ps_customeraccountlinks/ps_customeraccountlinks.tpl';
     }
@@ -97,45 +96,45 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
     {
         $link = $this->context->link;
 
-        $my_account_urls = array(
-            2 => array(
-                'title' => $this->trans('Orders', array(), 'Admin.Global'),
+        $my_account_urls = [
+            2 => [
+                'title' => $this->trans('Orders', [], 'Admin.Global'),
                 'url' => $link->getPageLink('history', true),
-            ),
-            3 => array(
-                'title' => $this->trans('Credit slips', array(), 'Modules.Customeraccountlinks.Admin'),
+            ],
+            3 => [
+                'title' => $this->trans('Credit slips', [], 'Modules.Customeraccountlinks.Admin'),
                 'url' => $link->getPageLink('order-slip', true),
-            ),
-            4 => array(
-                'title' => $this->trans('Addresses', array(), 'Shop.Theme.Global'),
+            ],
+            4 => [
+                'title' => $this->trans('Addresses', [], 'Shop.Theme.Global'),
                 'url' => $link->getPageLink('addresses', true),
-            ),
-            0 => array(
-                'title' => $this->trans('Personal info', array(), 'Modules.Customeraccountlinks.Admin'),
+            ],
+            0 => [
+                'title' => $this->trans('Personal info', [], 'Modules.Customeraccountlinks.Admin'),
                 'url' => $link->getPageLink('identity', true),
-            ),
-        );
+            ],
+        ];
 
-        if ((int)Configuration::get('PS_ORDER_RETURN')) {
-            $my_account_urls[1] = array(
-                'title' => $this->trans('Merchandise returns', array(), 'Modules.Customeraccountlinks.Admin'),
+        if ((int) Configuration::get('PS_ORDER_RETURN')) {
+            $my_account_urls[1] = [
+                'title' => $this->trans('Merchandise returns', [], 'Modules.Customeraccountlinks.Admin'),
                 'url' => $link->getPageLink('order-follow', true),
-            );
+            ];
         }
 
         if (CartRule::isFeatureActive()) {
-            $my_account_urls[5] = array(
-                'title' => $this->trans('Vouchers', array(), 'Shop.Theme.Customeraccount'),
+            $my_account_urls[5] = [
+                'title' => $this->trans('Vouchers', [], 'Shop.Theme.Customeraccount'),
                 'url' => $link->getPageLink('discount', true),
-            );
+            ];
         }
 
         // Sort Account links base in his index
         ksort($my_account_urls);
 
-        return array(
+        return [
             'my_account_urls' => $my_account_urls,
-            'logout_url' => $link->getPageLink('index', true, null, "mylogout"),
-        );
+            'logout_url' => $link->getPageLink('index', true, null, 'mylogout'),
+        ];
     }
 }
