@@ -2,7 +2,7 @@
 
 ## About
 
-Displays a block with links relative to a user's account.
+Enrich your stats, add a registration progress tab to analyze your visitors’ behavior.
 
 ## Reporting issues
 
