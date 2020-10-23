@@ -43,7 +43,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         parent::__construct();
 
         $this->displayName = $this->trans('My Account block', [], 'Modules.Customeraccountlinks.Admin');
-        $this->description = $this->trans('Displays a block with links relative to a user\'s account.', [], 'Modules.Customeraccountlinks.Admin');
+        $this->description = $this->trans('Enrich your stats, add a registration progress tab to analyze your visitors’ behavior.', [], 'Modules.Customeraccountlinks.Admin');
 
         $this->ps_versions_compliancy = ['min' => '1.7.2.0', 'max' => _PS_VERSION_];
 
