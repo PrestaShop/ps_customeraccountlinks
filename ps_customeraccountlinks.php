@@ -133,7 +133,13 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         ksort($my_account_urls);
 
         return [
+            /*
+            * @deprecated
+            */
             'my_account_urls' => $my_account_urls,
+            /*
+            * @deprecated
+            */
             'logout_url' => $link->getPageLink('index', true, null, 'mylogout'),
         ];
     }
