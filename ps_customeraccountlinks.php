@@ -133,6 +133,9 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         ksort($my_account_urls);
 
         return [
+            /*
+            * @deprecated
+            */
             'my_account_urls' => $my_account_urls,
             /*
             * @deprecated
