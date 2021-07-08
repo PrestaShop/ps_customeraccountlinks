@@ -48,7 +48,7 @@
       {hook h="displayMyAccountBlock"}
       <li><a href="{$urls.actions.logout}" title="{l s='Log me out' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Sign out' d='Shop.Theme.Actions'}</a></li>
     {else}
-      <li><a href="{$urls.pages.guest_tracking}" title="{l s='Order Tracking' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Order Tracking' d='Shop.Theme.Customeraccount'}</a></li>
+      <li><a href="{$urls.pages.guest_tracking}" title="{l s='Order tracking' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Order tracking' d='Shop.Theme.Customeraccount'}</a></li>
       <li><a href="{$urls.pages.my_account}" title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Sign in' d='Shop.Theme.Actions'}</a></li>
       <li><a href="{$urls.pages.register}" title="{l s='Create account' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Create account' d='Shop.Theme.Customeraccount'}</a></li>
     {/if}
