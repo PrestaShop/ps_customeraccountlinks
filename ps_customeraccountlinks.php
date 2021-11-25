@@ -45,7 +45,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         $this->displayName = $this->trans('My Account block', [], 'Modules.Customeraccountlinks.Admin');
         $this->description = $this->trans('Enrich your stats, add a registration progress tab to analyze your visitors’ behavior.', [], 'Modules.Customeraccountlinks.Admin');
 
-        $this->ps_versions_compliancy = ['min' => '1.7.2.0', 'max' => _PS_VERSION_];
+        $this->ps_versions_compliancy = ['min' => '1.7.4.0', 'max' => _PS_VERSION_];
 
         $this->templateFile = 'module:ps_customeraccountlinks/ps_customeraccountlinks.tpl';
     }
