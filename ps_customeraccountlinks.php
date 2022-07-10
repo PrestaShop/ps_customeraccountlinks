@@ -90,7 +90,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         if(Customer::getAddressesTotalById($this->context->customer->id)){
             $tpl_key.="_multiple";
         }
-        if (!$this->isCached($this->templateFile, $this->getCacheId($tpl_key))) {
+        if($this->context->smarty->tpl_vars['customer']->value['addresses']){
             $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
         }
 
