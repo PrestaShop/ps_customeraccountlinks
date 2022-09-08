@@ -86,11 +86,15 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
 
     public function renderWidget($hookName = null, array $configuration = [])
     {
-        if (!$this->isCached($this->templateFile, $this->getCacheId('ps_customeraccountlinks'))) {
+        $tpl_key = 'ps_customeraccountlinks';
+        if ($this->context->smarty->tpl_vars['customer']->value['addresses']) {
+            $tpl_key .= '_multiple';
+        }
+        if (!$this->isCached($this->templateFile, $this->getCacheId($tpl_key))) {
             $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
         }
 
-        return $this->fetch($this->templateFile, $this->getCacheId('ps_customeraccountlinks'));
+        return $this->fetch($this->templateFile, $this->getCacheId($tpl_key));
     }
 
     public function getWidgetVariables($hookName = null, array $configuration = [])
