@@ -2,7 +2,7 @@
 
 ## About
 
-Enrich your stats, add a registration progress tab to analyze your visitors’ behavior.
+Welcome your customers with their personal information displayed right on your footer.
 
 ## Reporting issues
 
