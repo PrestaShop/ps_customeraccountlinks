@@ -81,7 +81,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
 
     public function _clearCache($template, $cache_id = null, $compile_id = null)
     {
-        parent::_clearCache($this->templateFile);
+        return parent::_clearCache($this->templateFile);
     }
 
     public function renderWidget($hookName = null, array $configuration = [])
